@@ -1,0 +1,365 @@
+{% extends "nav.html" %}
+
+{% block base_section %}
+{% load static %}
+
+
+
+<style>
+  * {box-sizing: border-box;}
+  body {font-family: Verdana, sans-serif;}
+  .mySlides {display: none;}
+  img {vertical-align: middle;}
+  
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+ 
+  
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .text {font-size: 11px}
+  }
+
+
+ 
+
+  #home{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: fit-content;
+   
+  }
+  .mySlides img{
+    height: 100dvh;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .mySlides img{
+      height: 100%;
+      widht: 100%;
+    }
+
+    #home{
+     
+      width: 100%;
+      height: fit-content;
+      
+    }
+
+    #social_gallery p{
+      font-weight: 500;
+      
+      font-size: 20px;
+    }
+    #social_gallery span{
+    
+      word-spacing: 0px;
+      font-weight: 700;
+    }
+      
+
+
+
+    #goal_items{
+      height: fit-content;
+     
+   
+      border-radius:100px 0px 100px 0px;
+    }
+    .goal_main_div{
+     width:100%;
+     padding: 20px;
+    }
+    .goal_main_div h1{
+     font-size: 20px;
+     font-weight: 600;
+     
+     margin-bottom: 20px;
+    }
+    #goal_span{
+      font-size: 15px;
+      
+     }
+     .goal_headline{
+      font-size: 10px;
+      margin-bottom: 12px;
+    
+     }
+  }
+  </style>
+ 
+  
+
+  
+  
+
+<section id="home" style="background-image: url({% static 'home/home_img.jpg' %});">
+ 
+  <div class="slideshow-container">
+  
+    <div class="mySlides fade">
+  
+      <img src="image/home/home1.jpg" style="width:100%">
+      <div class="text">MHS-19</div>
+    </div>
+    <div class="mySlides fade">
+    
+      <img src="image/home/home2.jpg" style="width:100%">
+      <div class="text">MHS-19</div>
+    </div>
+    <div class="mySlides fade">
+     
+      <img src="image/home/home3.jpg" style="width:100%">
+      <div class="text">MHS-19</div>
+    </div>
+    
+    
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+    
+    
+  
+  
+  
+</section>
+
+
+
+
+<section id="goal_section">
+    <div id="goal_items" data-aos="fade-right">
+      <div class="container" >
+        <div class="row">
+          <div class="goal_main_div" >
+           <div class="goal_headline">
+            
+            <h1>OUR MAIN PURPOSE</h1>
+            <span id="goal_span">"You must never be fearful about what you are doing when it is right"</span>
+           </div>
+            <p>
+            
+              Every human contributes to the world in some way, whether through positive or
+               negative actions. Social workers can contribute goodness and light, helping 
+               people see hope rather than despair. In turn, they can have hope.
+              The main objective of our batch is to do welfare of people with own funding. 
+               Some participate in these social activities with money, some with volunteer,
+                and some with intelligence. We are united to change any disharmony in the society
+
+            </p>
+      
+          </div>
+      
+        </div>
+      
+      </div>
+    </div>
+ 
+</section>
+
+
+
+
+
+
+ <!-- ======= social Section ======= -->
+ <section id="gallery" class="gallery section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div id="social_gallery" class="section-header">
+      <h2>Gallery</h2>
+      <p>Check <span>OUR SOCIAL WORKS</span></p>
+    </div>
+
+    <div class="gallery-slider swiper">
+      <div class="swiper-wrapper align-items-center">
+
+        {% for social in social_work %}
+        {% if social.image %}
+       
+
+        <div  class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{{social.image.url}}" ><img src="{{social.image.url}}" class="img-fluid" alt=""><h5>{{social.details}}</h5></a></div>
+       
+      
+        {% endif %}
+       
+        {% endfor %}
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section><!-- End Gallery Section -->
+
+
+
+
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-header">
+      <h2>Musapur High School</h2>
+      
+    </div>
+
+    <div class="mb-3">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.391412746461!2d91.3093786745583!3d22.8250039793127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37535a6bc4433fa7%3A0x6c23936a8a5646f2!2sMusapur%20High%20School!5e0!3m2!1sen!2sbd!4v1713800350625!5m2!1sen!2sbd" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+   
+
+  
+  </div>
+</section>
+
+</main>
+
+
+
+
+
+
+<footer id="footer" class="footer">
+
+<div class="container">
+  <div class="row gy-3">
+    <div class="col-lg-4 col-md-6 d-flex">
+      <i class="bi bi-geo-alt icon"></i>
+      <div>
+        <h4>Address</h4>
+        <p>
+          Musapur <br>
+          Companigonj, Noakhali<br>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 footer-links d-flex">
+      <i class="bi bi-telephone icon"></i>
+      <div>
+        <h4>Contact</h4>
+        <p>
+          <strong>Phone:</strong> +88 01838- 724306<br>
+          <strong>Email:</strong> mhsbatch.19@gmail.com<br>
+         
+        </p>
+      </div>
+    </div>
+
+    
+
+    <div class="col-lg-4 col-md-6 footer-links">
+      <h4>Follow Us</h4>
+      <div class="social-links d-flex">
+
+        <a href="https://www.facebook.com/profile.php?id=61557664097700&mibextid=ZbWKwL" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+       
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="copyright">
+    &copy; Copyright <strong><span>MHS-19</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+   
+    Developed by <a style="font-weight: 500;" href="https://www.facebook.com/profile.php?id=100014622309652&mibextid=ZbWKwL">AR TAHMID</a> & <a style="font-weight: 500;" href="https://www.facebook.com/profile.php?id=61554903244756&mibextid=ZbWKwL">The ART Developer</a>
+  </div>
+</div>
+
+</footer>
+
+
+<script>
+  let slideIndex = 0;
+  showSlides();
+  
+  function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 1000); // Change image every 2 seconds
+  }
+  </script>
+
+
+{% block index.html %}{% endblock index.html %}
+
+
+{% endblock base_section %}
+  
